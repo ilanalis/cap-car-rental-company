@@ -1,25 +1,25 @@
-# Getting Started
+# Car Rental Management System
 
-Welcome to your new project.
+A backend service built with the SAP Cloud Application Programming Model (CAP). This project manages a car rental fleet, customer data with structured addresses, rental transactions, and vehicle maintenance records.
 
-It contains these folders and files, following our recommended project layout:
+## Data Model Overview
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+The system is built around four main entities:
 
+1. Cars: Stores vehicle technical specs and pricing.
 
-## Next Steps
+2. Customers: Contains personal info and a structured Address object.
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+3. Rentals: Handles the many-to-many relationship between Customers and Cars.
 
+4. Maintenances: Tracks repair logs and costs.
 
-## Learn More
+## Tech Stack
 
-Learn more at https://cap.cloud.sap/docs/get-started/.
+- Framework: SAP CAP (Node.js)
+
+- Database: SQLite (Local development)
+
+- Modeling: Core Data Services (CDS)
+
+- Protocol: OData v4
