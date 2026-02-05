@@ -1,0 +1,4 @@
+ID,firstName,lastName,email,driversLicenseNumber,phoneNumber,address_street,address_city,address_country_code
+22222222-bbbb-cccc-dddd-000000000002,Ivan,Ivanov,ivan@test.com,DL-77123,+79991234567,ул. Ленина 1,Москва,RU
+33333333-cccc-dddd-eeee-000000000003,John,Doe,john@test.com,DL-USA001,+15550101,Main St 10,New York,US
+44444444-dddd-eeee-ffff-000000000004,Maria,Schmidt,maria@test.com,DL-GER999,+491234567,Berliner Str 5,Berlin,DE
