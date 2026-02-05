@@ -1,0 +1,54 @@
+###
+#
+# Browse Cars
+#
+GET http://localhost:4004/odata/v4/catalog/Cars?
+  &$select=brand,model
+
+###
+#
+# Browse Rentals
+#
+GET http://localhost:4004/odata/v4/catalog/Rentals?
+  &$expand=customer
+
+###
+#
+# Browse Maintenances
+#
+GET http://localhost:4004/odata/v4/catalog/Maintenances?
+
+###
+#
+# Delete Maintenance with ID f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c
+#
+DELETE http://localhost:4004/odata/v4/catalog/Maintenances(f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c)
+
+
+###
+#
+# Get Customer with ID 22222222-bbbb-cccc-dddd-000000000002
+#
+GET http://localhost:4004/odata/v4/catalog/Customers(22222222-bbbb-cccc-dddd-000000000002)
+
+
+###
+#
+# Get Rental with ID a7b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d
+#
+GET http://localhost:4004/odata/v4/catalog/Rentals(a7b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d)
+
+
+
+###
+#
+# Update Rental with ID a7b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d
+#
+PATCH  http://localhost:4004/odata/v4/catalog/Rentals(a7b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d)
+Content-Type: application/json
+
+{ "returnDate": "2026-03-15T10:00:00Z"}
+
+
+
+
