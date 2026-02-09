@@ -1,7 +1,8 @@
 namespace car.rental.company;
 using { Country } from '@sap/cds/common';
 
-
+@odata.draft.enabled
+@odata.draft.bypass
 entity Cars {
     key ID               : UUID; 
     licensePlate         : String @assert.unique @mandatory;

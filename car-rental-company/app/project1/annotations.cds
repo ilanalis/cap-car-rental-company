@@ -78,6 +78,10 @@ annotate service.Cars with @(
             Label : '{i18n>DailyRentalPrice}',
             Value : dailyRentalPrice,
         },
+        {
+            $Type : 'UI.DataField',
+            Value : availabilityStatus,
+        },
     ],
     UI.SelectionFields : [
         availabilityStatus,
