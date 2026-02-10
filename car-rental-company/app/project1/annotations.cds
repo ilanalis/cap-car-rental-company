@@ -1,5 +1,6 @@
 using CatalogService as service from '../../srv/cat-service';
 annotate service.Cars with @(
+    
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
         Data : [
@@ -35,8 +36,7 @@ annotate service.Cars with @(
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'category',
-                Value : category,
+                Value : category_ID,
             },
         ],
     },
@@ -53,10 +53,6 @@ annotate service.Cars with @(
             $Type : 'UI.DataField',
             Label : '{i18n>Model}',
             Value : model,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : category,
         },
         {
             $Type : 'UI.DataField',
@@ -80,23 +76,54 @@ annotate service.Cars with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : availabilityStatus,
+            Value : category_ID,
+            Label : '{i18n>Category}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : availabilityStatus_code,
+            Label : '{i18n>Status}',
         },
     ],
     UI.SelectionFields : [
-        availabilityStatus,
-        category,
+        availabilityStatus_code,
         licensePlate,
         yearOfManufacture,
+        category_ID,
     ],
 );
 
-annotate service.Cars with {
-    availabilityStatus @Common.Label : '{i18n>AvailabilityStatus}'
-};
 
 annotate service.Cars with {
-    category @Common.Label : '{i18n>Category}'
+    category_ID @(
+        title: 'Category',
+        Common.Text : categoryTitle, 
+        Common.TextArrangement : #TextOnly,
+        Common.ValueListWithFixedValues: true,
+        Common.ValueList : {
+            CollectionPath: 'CarCategory',
+            Parameters: [
+                { $Type: 'Common.ValueListParameterInOut', LocalDataProperty: category_ID, ValueListProperty: 'ID' }
+            ]
+        }
+    );
+    availabilityStatus @(
+        title: 'Status',
+        Common.Text : statusName,
+        Common.TextArrangement : #TextOnly,
+        Common.ValueListWithFixedValues: true,
+        Common.ValueList : {
+            CollectionPath: 'AvailabilityStatus',
+            Parameters: [
+                { 
+                    $Type: 'Common.ValueListParameterInOut', 
+                    LocalDataProperty: availabilityStatus_code, 
+                    ValueListProperty: 'code' 
+                }
+            ]
+        },
+        Common.Label : '{i18n>Status}',
+    );
 };
 
 annotate service.Cars with {
@@ -107,3 +134,16 @@ annotate service.Cars with {
     yearOfManufacture @Common.Label : '{i18n>ManufactureYear}'
 };
 
+annotate service.CarCategory with {
+    ID @Common.Text : {
+        $value : title,
+        ![@UI.TextArrangement] : #TextOnly
+    }
+};
+
+annotate service.AvailabilityStatus with {
+    code @Common.Text : {
+        $value : name,
+        ![@UI.TextArrangement] : #TextOnly
+    }
+};

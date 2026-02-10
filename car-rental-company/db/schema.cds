@@ -1,17 +1,22 @@
 namespace car.rental.company;
-using { Country } from '@sap/cds/common';
+using { Country, sap.common.CodeList } from '@sap/cds/common';
 
 @odata.draft.enabled
 @odata.draft.bypass
+@assert.unique : {
+  uniqueLicensePlate: [ licensePlate ]
+}
 entity Cars {
     key ID               : UUID; 
-    licensePlate         : String @assert.unique @mandatory;
+    licensePlate         : String  @mandatory;
     brand                : String @mandatory;
     model                : String @mandatory;
-    yearOfManufacture    : Integer @mandatory;
+    yearOfManufacture    : String @mandatory;
     dailyRentalPrice     : Decimal(10,2) @mandatory;
-    availabilityStatus   : String @mandatory;
-    category             : String @mandatory;
+    availabilityStatus   : Association to AvailabilityStatus;
+
+    category_ID          : UUID;        
+    category             : Association to CarCategory on category.ID = category_ID;
 }
 
 type Address {
@@ -27,7 +32,7 @@ entity Customers {
     email                : String @assert.unique @mandatory;
     driversLicenseNumber : String @assert.unique @mandatory;
     phoneNumber          : String @mandatory;
-    address              : Address
+    address              : Address @mandatory;
 }
 
 entity Rentals {
@@ -46,4 +51,17 @@ entity Maintenances {
     endDate              : Date @mandatory;
     issue                : String(200) @mandatory;
     cost                 : Decimal(10,2) @mandatory;
+}
+
+entity CarCategory {
+    key ID : UUID;
+    title  : String @mandatory;                
+}
+
+entity AvailabilityStatus : CodeList {
+    key code : String enum {
+        Available = 'A';
+        Rented = 'R';
+        UnderMaintenance = 'M';
+    }
 }

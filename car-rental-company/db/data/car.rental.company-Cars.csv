@@ -1,4 +1,4 @@
-ID,licensePlate,brand,model,yearOfManufacture,dailyRentalPrice,availabilityStatus,category
-11111111-aaaa-bbbb-cccc-000000000001,A123BC77,Toyota,Camry,2022,45.00,Available,Sedan
-22222222-bbbb-cccc-dddd-000000000002,X777XX99,BMW,X5,2023,120.00,Rented,SUV
-33333333-cccc-dddd-eeee-000000000003,E555EE150,Tesla,Model 3,2021,80.00,Available,Electric
+ID,licensePlate,brand,model,yearOfManufacture,dailyRentalPrice,availabilityStatus,category_ID
+11111111-aaaa-bbbb-cccc-000000000001,A123BC77,Toyota,Camry,2022,45.00,A,00000001-0000-0000-0000-000000000001
+22222222-bbbb-cccc-dddd-000000000002,X777XX99,BMW,X5,2023,120.00,R,00000002-0000-0000-0000-000000000002
+33333333-cccc-dddd-eeee-000000000003,E555EE150,Tesla,Model 3,2021,80.00,A,00000003-0000-0000-0000-000000000003
